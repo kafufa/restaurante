@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
+    color: #f4f4f4;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Partículas de fondo */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(218, 165, 32, 0.3);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 1s; }
+.particle:nth-child(3) { top: 50%; left: 20%; animation-delay: 2s; }
+.particle:nth-child(4) { top: 80%; left: 90%; animation-delay: 3s; }
+.particle:nth-child(5) { top: 30%; left: 50%; animation-delay: 4s; }
+.particle:nth-child(6) { top: 70%; left: 70%; animation-delay: 5s; }
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg); 
+        opacity: 0.8; 
+    }
+}
+
+/* Contenedor principal */
+.container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header con logo */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 1.5s ease-out;
+}
+
+.logo {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 6rem;
+    font-weight: 700;
+    color: #daa520;
+    text-shadow: 0 0 30px rgba(218, 165, 32, 0.5);
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite alternate;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+@keyframes glow {
+    from { 
+        text-shadow: 0 0 20px rgba(218, 165, 32, 0.4); 
+    }
+    to { 
+        text-shadow: 0 0 40px rgba(218, 165, 32, 0.8), 0 0 60px rgba(218, 165, 32, 0.6); 
+    }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #f4f4f4;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 0.5s forwards;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: #daa520;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 1s forwards;
+}
+
+/* Sección principal */
+.main-content {
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.welcome-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #daa520;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 1.5s forwards;
+}
+
+.description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 2s forwards;
+}
+
+/* Tarjetas de características */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.feature-card {
+    background: rgba(45, 24, 16, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(218, 165, 32, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 1s ease-out forwards;
+}
+
+.feature-card:nth-child(1) { animation-delay: 2.5s; }
+.feature-card:nth-child(2) { animation-delay: 2.8s; }
+.feature-card:nth-child(3) { animation-delay: 3.1s; }
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(218, 165, 32, 0.2);
+    border-color: rgba(218, 165, 32, 0.6);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #daa520;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f4f4f4;
+    margin-bottom: 15px;
+}
+
+.feature-text {
+    font-size: 1rem;
+    color: #c0c0c0;
+    line-height: 1.6;
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 3.5s forwards;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 180px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    color: #1a1a1a;
+    background: linear-gradient(45deg, #daa520, #ffd700);
+    border: 2px solid transparent;
+}
+
+.btn-secondary {
+    color: #daa520;
+    background: transparent;
+    border: 2px solid #daa520;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.btn-text {
+    transition: transform 0.3s ease;
+}
+
+/* Efectos hover para botones */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.5);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    background: rgba(218, 165, 32, 0.1);
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
+}
+
+.btn:hover .btn-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.btn:hover .btn-text {
+    transform: translateX(2px);
+}
+
+/* Elementos decorativos */
+.decorative-element {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+
+.decorative-element:nth-child(1) {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.decorative-element:nth-child(2) {
+    bottom: 10%;
+    right: 5%;
+    animation-delay: 10s;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 4s forwards;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 4rem;
+    }
+    
+    .welcome-text {
+        font-size: 2rem;
+    }
+    
+    .description {
+        font-size: 1.1rem;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .decorative-element {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Animaciones adicionales para interacciones */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.logo:active {
+    animation: pulse 0.3s ease;
+}
+
+/* Efectos de carga */
+.container {
+    opacity: 0;
+    animation: containerFadeIn 1s ease-out 0.3s forwards;
+}
+
+@keyframes containerFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
